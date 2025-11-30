@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Vector.py                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
+#    Updated: 2025/11/30 20:56:46 by alaparic         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 from typing import TypeVar, Generic, List, Tuple, Callable
 import numbers
 import copy
