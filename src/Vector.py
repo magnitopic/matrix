@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
-#    Updated: 2025/11/30 20:56:46 by alaparic         ###   ########.fr        #
+#    Updated: 2025/11/30 21:03:23 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,22 @@ class Vector(Generic[T]):
     def __rmul__(self, scalar: T) -> 'Vector[T]':
         return self.scl(scalar)
 
+    """ ex03 addition """
+
+    def dot(self, other: 'Vector[T]') -> T:
+        if self.size() != other.size():
+            raise ValueError(
+                "Vectors must be of the same length to compute dot product.")
+
+        return sum(a * b for a, b in zip(self.data, other.data))
+
+    def __matmul__(self, other: 'Vector[T]') -> T:
+        return self.dot(other)
+
     """ Utility methods """
+
+    def size(self) -> int:
+        return len(self.data)
 
     def __str__(self) -> str:
         return f"{self.data}"
