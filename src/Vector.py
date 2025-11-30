@@ -16,6 +16,8 @@ class Vector(Generic[T]):
     """ Basic vector operations """
 
     def sum(self, other: 'Vector[T]') -> 'Vector[T]':
+        if not isinstance(other, Vector):
+            raise TypeError("The operand must be a Vector.")
         if len(self.data) != len(other.data):
             raise ValueError("Vectors must be of the same length to sum.")
         summed_data = [a + b for a, b in zip(self.data, other.data)]
@@ -25,6 +27,8 @@ class Vector(Generic[T]):
         return self.sum(other)
 
     def sub(self, other: 'Vector[T]') -> 'Vector[T]':
+        if not isinstance(other, Vector):
+            raise TypeError("The operand must be a Vector.")
         if len(self.data) != len(other.data):
             raise ValueError("Vectors must be of the same length to subtract.")
         subbed_data = [a - b for a, b in zip(self.data, other.data)]
