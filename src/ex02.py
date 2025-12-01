@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:08 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 13:19:50 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 17:20:40 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ def linear_interpolation(u: T, v: T, t: int | float) -> T:
 
 
 def main():
-    print("Linear Interpolation of Vectors")
+    print("=== Linear Interpolation of Vectors ===")
     v1 = Vector([2.0, 1.0])
     v2 = Vector([4.0, 2.0])
 
@@ -37,7 +37,7 @@ def main():
 
     print("\n", "-" * 40, "\n")
 
-    print("Linear Interpolation of Matrices")
+    print("=== Linear Interpolation of Matrices ===")
     m1 = Matrix([[1.0, 2.0], [3.0, 4.0]])
     m2 = Matrix([[5.0, 6.0], [7.0, 8.0]])
     print(f"lerp(\n{m1},\n{m2}, 0.0) \n=\n{linear_interpolation(m1, m2, 0.0)}")

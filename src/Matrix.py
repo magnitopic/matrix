@@ -6,14 +6,22 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 13:05:32 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 17:16:08 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from typing import TypeVar, Generic, List, Tuple, Callable
 import numbers
+from Vector import Vector
 
 T = TypeVar('T', bound=numbers.Number)
+
+
+class Matrix(Generic[T]):
+    pass
+
+
+O = TypeVar('O', Vector, Matrix)
 
 
 class Matrix(Generic[T]):
@@ -56,10 +64,10 @@ class Matrix(Generic[T]):
         ]
 
         return Matrix(subbed_data)
-    
+
     def __sub__(self, other: 'Matrix[T]') -> 'Matrix[T]':
         return self.sub(other)
-    
+
     def scl(self, scalar: T) -> 'Matrix[T]':
         if not isinstance(scalar, numbers.Number):
             raise TypeError("Scalar must be a number.")
@@ -75,6 +83,49 @@ class Matrix(Generic[T]):
 
     def __rmul__(self, scalar: T) -> 'Matrix[T]':
         return self.scl(scalar)
+
+    """ ex07 addition """
+
+    def mul_vec(self, vec: 'Vector[T]') -> 'Vector[T]':
+        rows, cols = self.shape()
+
+        if cols != len(vec):
+            raise ValueError(
+                "Matrix columns must match Vector/Matrix rows for multiplication.")
+
+        result = []
+        for i in range(rows):
+            row_vector = Vector([self.data[i][j] for j in range(cols)])
+            result.append(row_vector @ vec)
+
+        return Vector(result)
+
+    def mul_mat(self, other: 'Matrix[T]') -> 'Matrix[T]':
+        rows1, cols1 = self.shape()
+        rows2, cols2 = other.shape()
+
+        if cols1 != rows2:
+            raise ValueError(
+                "Matrix A's columns must match Matrix B's rows for multiplication.")
+
+        result = [[0 for _ in range(cols2)] for _ in range(rows1)]
+
+        for i in range(rows1):
+            for j in range(cols2):
+                sum_product = 0
+                for k in range(cols1):
+                    sum_product += self.data[i][k] * other.data[k][j]
+                result[i][j] = sum_product
+
+        return Matrix(result)
+
+    def __matmul__(self, other: O) -> O:
+        if isinstance(other, Vector):
+            return self.mul_vec(other)
+        elif isinstance(other, Matrix):
+            return self.mul_mat(other)
+        else:
+            raise TypeError("Unsupported type for matrix multiplication.")
 
     """ Utility methods """
 

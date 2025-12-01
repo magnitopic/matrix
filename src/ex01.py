@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:55:54 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 13:14:46 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 17:21:32 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ def linear_combination_matrix(matrices: list['Matrix'], coefficients: list[float
 
 
 def main():
-    print("Linear Combination of Vectors")
+    print("=== Linear Combination of Vectors ===")
     v1 = Vector([1, 2, 3])
     v2 = Vector([4, 5, 6])
     v3 = Vector([7, 8, 9])
@@ -58,7 +58,7 @@ def main():
 
     print("\n", "-" * 40, "\n")
 
-    print("Linear Combination of Matrices\n")
+    print("=== Linear Combination of Matrices ===")
     m1 = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     m2 = Matrix([[9, 8, 7], [6, 5, 4], [3, 2, 1]])
     k = [0.4, 0.6]
