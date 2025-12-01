@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
-#    Updated: 2025/11/30 21:03:23 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 10:57:41 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,17 @@ class Vector(Generic[T]):
 
     def __matmul__(self, other: 'Vector[T]') -> T:
         return self.dot(other)
+
+    """ ex04 addition """
+
+    def norm_1(self) -> T:
+        return sum(abs(x) for x in self.data)
+
+    def norm(self) -> T:
+        return sum(abs(x) ** 2 for x in self.data) ** 0.5
+
+    def norm_inf(self) -> T:
+        return max(abs(x) for x in self.data)
 
     """ Utility methods """
 
