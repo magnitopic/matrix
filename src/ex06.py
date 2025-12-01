@@ -6,14 +6,14 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:07:26 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 12:12:53 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 12:57:31 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from Vector import Vector
 
 def cross_product(u: Vector[float], v: Vector[float]) -> Vector[float]:
-    if u.size() != 3 or v.size() != 3:
+    if len(u) != 3 or len(v) != 3:
         raise ValueError("Both vectors must be 3-dimensional for cross product.")
 
     cross_data = [

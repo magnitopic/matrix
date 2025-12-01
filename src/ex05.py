@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 11:01:35 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 12:01:28 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 12:57:13 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ def angle_cos(u: Vector[float], v: Vector[float]) -> float:
     if u.norm() == 0 or v.norm() == 0:
         raise ValueError("Cannot compute angle with zero-length vector.")
 
-    if u.size() != v.size():
+    if len(u) != len(v):
         raise ValueError(
             "Vectors must be of the same length to compute angle.")
 

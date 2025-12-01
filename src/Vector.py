@@ -6,13 +6,12 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 11:02:30 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 12:57:59 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from typing import TypeVar, Generic, List, Tuple, Callable
+from typing import TypeVar, Generic, List
 import numbers
-import copy
 
 T = TypeVar('T', bound=numbers.Number)
 
@@ -27,7 +26,7 @@ class Vector(Generic[T]):
 
     """ Basic vector operations """
 
-    def sum(self, other: 'Vector[T]') -> 'Vector[T]':
+    def add(self, other: 'Vector[T]') -> 'Vector[T]':
         if not isinstance(other, Vector):
             raise TypeError("The operand must be a Vector.")
         if len(self.data) != len(other.data):
@@ -36,7 +35,7 @@ class Vector(Generic[T]):
         return Vector(summed_data)
 
     def __add__(self, other: 'Vector[T]') -> 'Vector[T]':
-        return self.sum(other)
+        return self.add(other)
 
     def sub(self, other: 'Vector[T]') -> 'Vector[T]':
         if not isinstance(other, Vector):
@@ -64,7 +63,7 @@ class Vector(Generic[T]):
     """ ex03 addition """
 
     def dot(self, other: 'Vector[T]') -> T:
-        if self.size() != other.size():
+        if len(self) != len(other):
             raise ValueError(
                 "Vectors must be of the same length to compute dot product.")
 
@@ -86,7 +85,7 @@ class Vector(Generic[T]):
 
     """ Utility methods """
 
-    def size(self) -> int:
+    def __len__(self) -> int:
         return len(self.data)
 
     def __str__(self) -> str:
