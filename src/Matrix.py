@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 17:16:08 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 19:58:10 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,12 +127,29 @@ class Matrix(Generic[T]):
         else:
             raise TypeError("Unsupported type for matrix multiplication.")
 
+    """ ex09 addition """
+
+    def transpose(self) -> 'Matrix[T]':
+        if not self.data:
+            raise ValueError("Matrix is empty.")
+
+        rows, cols = self.shape()
+
+        result = [[self.data[j][i] for j in range(rows)] for i in range(cols)]
+
+        return Matrix(result)
+
     """ Utility methods """
 
     def shape(self) -> Tuple[int, int]:
         return len(self.data), len(self.data[0])
 
     def __str__(self) -> str:
+        rows = [
+            '[' + ', '.join(f"{item}" for item in row) + ']' for row in self.data]
+        return '[' + ',\n '.join(rows) + ']\n'
+
+    def __repr__(self) -> str:
         rows = [
             '[' + ', '.join(f"{item}" for item in row) + ']' for row in self.data]
         return '[' + ',\n '.join(rows) + ']\n'
