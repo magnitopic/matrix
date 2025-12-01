@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 10:57:41 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/01 11:02:30 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,3 +94,6 @@ class Vector(Generic[T]):
 
     def __repr__(self) -> str:
         return f"{self.data}"
+
+    def __iter__(self):
+        return iter(self.data)
