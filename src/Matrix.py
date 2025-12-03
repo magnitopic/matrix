@@ -6,12 +6,13 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/03 12:49:22 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/03 14:06:54 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from typing import TypeVar, Generic, List, Tuple, Callable
 import numbers
+from unittest import result
 from Vector import Vector
 
 T = TypeVar('T', bound=numbers.Number)
@@ -138,11 +139,50 @@ class Matrix(Generic[T]):
         result = [[self.data[j][i] for j in range(rows)] for i in range(cols)]
 
         return Matrix(result)
-    
+
     """ ex10 addition """
 
-    """ def row_echelon(self) -> 'Matrix[T]': """
-        
+    def row_echelon(self) -> float:
+        rows, cols = self.shape()
+        result = [row[:] for row in self.data]  # Deep copy of the matrix data
+
+        if rows == 0 or cols == 0:
+            raise ValueError("Matrix is empty.")
+        if rows != cols:
+            raise ValueError(
+                "Matrix must be square to compute row echelon form.")
+        if rows > 4:
+            print(
+                "WARNING: Computing row echelon form for matrices larger than 4x4 may be slow.")
+
+        determinant = 1
+
+        for col in range(min(rows, cols)):
+            pivot_row = col
+            for row in range(col + 1, rows):
+                if abs(result[row][col]) > abs(result[pivot_row][col]):
+                    pivot_row = row
+
+            if result[pivot_row][col] == 0:
+                return 0.0
+
+            if pivot_row != col:
+                result[col], result[pivot_row] = result[pivot_row], result[col]
+                determinant *= -1
+
+            pivot = result[col][col]
+            determinant *= pivot
+
+            for j in range(col, cols):
+                result[col][j] /= pivot
+
+            for row in range(col + 1, rows):
+                if result[row][col] != 0:
+                    factor = result[row][col]
+                    for j in range(col, cols):
+                        result[row][j] -= factor * result[col][j]
+
+        return determinant
 
     """ Utility methods """
 
