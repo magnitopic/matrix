@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 19:58:10 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/03 12:49:22 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,6 +138,11 @@ class Matrix(Generic[T]):
         result = [[self.data[j][i] for j in range(rows)] for i in range(cols)]
 
         return Matrix(result)
+    
+    """ ex10 addition """
+
+    """ def row_echelon(self) -> 'Matrix[T]': """
+        
 
     """ Utility methods """
 

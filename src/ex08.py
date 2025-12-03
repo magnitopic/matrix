@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 17:59:14 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 18:23:23 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/03 12:52:41 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ def main():
     ]
     matrix = Matrix(mat)
     print("Matrix:")
-    for row in matrix.data:
-        print(row)
+    print(matrix)
     print("Trace of the matrix:", trace(matrix))
 
     mat = [
@@ -39,8 +38,7 @@ def main():
     ]
     matrix = Matrix(mat)
     print("\nMatrix:")
-    for row in matrix.data:
-        print(row)
+    print(matrix)
     print("Trace of the matrix:", trace(matrix))
 
     mat = [
@@ -49,8 +47,7 @@ def main():
     ]
     matrix = Matrix(mat)
     print("\nMatrix:")
-    for row in matrix.data:
-        print(row)
+    print(matrix)
     try:
         print("Trace of the matrix:", trace(matrix))
     except ValueError as e:
