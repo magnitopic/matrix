@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/03 14:06:54 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/03 16:55:58 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,12 @@ class Matrix(Generic[T]):
     def __init__(self, data: List[List[T]]):
         if not data or not all(len(row) == len(data[0]) for row in data):
             raise ValueError(
-                "All rows must have the same length and matrix cannot be empty.")
+                "\033[0;31mAll rows must have the same length and matrix cannot be empty.\033[0m")
         for i, row in enumerate(data):
             for j, item in enumerate(row):
                 if not isinstance(item, numbers.Number):
-                    raise TypeError(f"All values must be numbers. "
-                                    f"Element at position ({i}, {j}) is not a number: {item}")
+                    raise TypeError(f"\033[0;31mAll values must be numbers. "
+                                    f"Element at position ({i}, {j}) is not a number: {item}\033[0m")
 
         self.data = data
 
@@ -42,7 +42,8 @@ class Matrix(Generic[T]):
 
     def add(self, other: 'Matrix[T]') -> 'Matrix[T]':
         if self.shape() != other.shape():
-            raise ValueError("Matrices must have the same dimensions to add.")
+            raise ValueError(
+                "\033[0;31mMatrices must have the same dimensions to add.\033[0m")
 
         summed_data = [
             [a + b for a, b in zip(row_self, row_other)]
@@ -57,7 +58,7 @@ class Matrix(Generic[T]):
     def sub(self, other: 'Matrix[T]') -> 'Matrix[T]':
         if self.shape() != other.shape():
             raise ValueError(
-                "Matrices must have the same dimensions to subtract.")
+                "\033[0;31mMatrices must have the same dimensions to subtract.\033[0m")
 
         subbed_data = [
             [a - b for a, b in zip(row_self, row_other)]
@@ -71,7 +72,7 @@ class Matrix(Generic[T]):
 
     def scl(self, scalar: T) -> 'Matrix[T]':
         if not isinstance(scalar, numbers.Number):
-            raise TypeError("Scalar must be a number.")
+            raise TypeError("\033[0;31mScalar must be a number.\033[0m")
 
         scaled_data = [
             [item * scalar for item in row] for row in self.data
@@ -92,7 +93,7 @@ class Matrix(Generic[T]):
 
         if cols != len(vec):
             raise ValueError(
-                "Matrix columns must match Vector/Matrix rows for multiplication.")
+                "\033[0;31mMatrix columns must match Vector/Matrix rows for multiplication.\033[0m")
 
         result = []
         for i in range(rows):
@@ -107,7 +108,7 @@ class Matrix(Generic[T]):
 
         if cols1 != rows2:
             raise ValueError(
-                "Matrix A's columns must match Matrix B's rows for multiplication.")
+                "\033[0;31mMatrix A's columns must match Matrix B's rows for multiplication.\033[0m")
 
         result = [[0 for _ in range(cols2)] for _ in range(rows1)]
 
@@ -126,13 +127,14 @@ class Matrix(Generic[T]):
         elif isinstance(other, Matrix):
             return self.mul_mat(other)
         else:
-            raise TypeError("Unsupported type for matrix multiplication.")
+            raise TypeError(
+                "\033[0;31mUnsupported type for matrix multiplication.\033[0m")
 
     """ ex09 addition """
 
     def transpose(self) -> 'Matrix[T]':
         if not self.data:
-            raise ValueError("Matrix is empty.")
+            raise ValueError("\033[0;31mMatrix is empty.\033[0m")
 
         rows, cols = self.shape()
 
@@ -147,13 +149,13 @@ class Matrix(Generic[T]):
         result = [row[:] for row in self.data]  # Deep copy of the matrix data
 
         if rows == 0 or cols == 0:
-            raise ValueError("Matrix is empty.")
+            raise ValueError("\033[0;31mMatrix is empty.\033[0m")
         if rows != cols:
             raise ValueError(
-                "Matrix must be square to compute row echelon form.")
+                "\033[0;31mMatrix must be square to compute row echelon form.\033[0m")
         if rows > 4:
             print(
-                "WARNING: Computing row echelon form for matrices larger than 4x4 may be slow.")
+                "\033[0;33mWARNING: Computing row echelon form for matrices larger than 4x4 may be slow.\033[0m")
 
         determinant = 1
 
