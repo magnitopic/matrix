@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/03 12:59:05 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 12:37:05 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/05 14:12:39 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,6 @@ def main():
     print("\nRow Echelon Form:")
     rref = m.row_echelon()
     print(rref)
-    print()
-        
 
 
 if __name__ == "__main__":
