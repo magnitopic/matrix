@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 12:51:57 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/05 13:15:04 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,47 +147,43 @@ class Matrix(Generic[T]):
 
     """ ex10 addition """
 
-    def row_echelon(self) -> float:
+    def row_echelon(self) -> 'Matrix[T]':
         rows, cols = self.shape()
-        result = [row[:] for row in self.data]  # Deep copy of the matrix data
 
-        if rows == 0 or cols == 0:
-            raise ValueError("\033[0;31mMatrix is empty.\033[0m")
-        if rows != cols:
-            raise ValueError(
-                "\033[0;31mMatrix must be square to compute row echelon form.\033[0m")
-        if rows > 4:
-            print(
-                "\033[0;33mWARNING: Computing row echelon form for matrices larger than 4x4 may be slow.\033[0m")
+        result = [row[:] for row in self.data]
 
-        determinant = 1
+        current_row = 0
 
-        for col in range(min(rows, cols)):
-            pivot_row = col
-            for row in range(col + 1, rows):
-                if abs(result[row][col]) > abs(result[pivot_row][col]):
-                    pivot_row = row
-
-            if result[pivot_row][col] == 0:
-                return 0.0
-
-            if pivot_row != col:
-                result[col], result[pivot_row] = result[pivot_row], result[col]
-                determinant *= -1
-
-            pivot = result[col][col]
-            determinant *= pivot
-
-            for j in range(col, cols):
-                result[col][j] /= pivot
-
-            for row in range(col + 1, rows):
+        for col in range(cols):
+            # Find the pivot (first non-zero element in current column)
+            pivot_row = None
+            for row in range(current_row, rows):
                 if result[row][col] != 0:
-                    factor = result[row][col]
-                    for j in range(col, cols):
-                        result[row][j] -= factor * result[col][j]
+                    pivot_row = row
+                    break
 
-        return determinant
+            # If no pivot found, move to next column
+            if pivot_row is None:
+                continue
+
+            # Swap current row with pivot row if needed
+            if pivot_row != current_row:
+                result[current_row], result[pivot_row] = result[pivot_row], result[current_row]
+
+            # Eliminate all rows below the pivot
+            pivot_value = result[current_row][col]
+            for row in range(current_row + 1, rows):
+                if result[row][col] != 0:
+                    factor = result[row][col] / pivot_value
+                    for c in range(cols):
+                        result[row][c] -= factor * result[current_row][c]
+
+            current_row += 1
+
+            if current_row >= rows:
+                break
+
+        return Matrix(result)
 
     """ Utility methods """
 

@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/03 12:34:49 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/03 12:52:16 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/04 20:29:20 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,16 @@ def main():
     print("Matrix:")
     print(mat)
     det = determinant(mat.data)
+    print(f"\nDeterminant: {det}\n")
+    print()
+    m = Matrix([
+        [0.0, 1.0, 2.0],
+        [3.0, 0.0, 4.0],
+        [5.0, 6.0, 0.0]
+    ])
+    print("Matrix:")
+    print(m)
+    det = determinant(m.data)
     print(f"\nDeterminant: {det}\n")
 
 
