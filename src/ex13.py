@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/05 14:20:37 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 18:07:41 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/05 18:08:39 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 from Matrix import Matrix
 
 
-def matrix_rank(matrix: 'Matrix[T]') -> int:
+def matrix_rank(matrix: 'Matrix[float]') -> int:
     # Get the row echelon form of the matrix
     echelon_form = matrix.row_echelon()
 
