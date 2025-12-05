@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:13 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/01 12:57:59 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/04 23:00:28 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,9 @@ class Vector(Generic[T]):
     def __sub__(self, other: 'Vector[T]') -> 'Vector[T]':
         return self.sub(other)
 
+    def __neg__(self) -> 'Vector[T]':
+        return self.scl(-1)
+
     def scl(self, scalar: T) -> 'Vector[T]':
         if not isinstance(scalar, numbers.Number):
             raise TypeError("Scalar must be a number.")
@@ -85,8 +88,11 @@ class Vector(Generic[T]):
 
     """ Utility methods """
 
-    def __len__(self) -> int:
+    def len(self) -> int:
         return len(self.data)
+
+    def __len__(self) -> int:
+        return self.len()
 
     def __str__(self) -> str:
         return f"{self.data}"

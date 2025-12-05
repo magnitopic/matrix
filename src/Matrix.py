@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/03 16:55:58 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/05 12:51:57 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,9 @@ class Matrix(Generic[T]):
 
     def __sub__(self, other: 'Matrix[T]') -> 'Matrix[T]':
         return self.sub(other)
+
+    def __neg__(self) -> 'Matrix[T]':
+        return self.scl(-1)
 
     def scl(self, scalar: T) -> 'Matrix[T]':
         if not isinstance(scalar, numbers.Number):
