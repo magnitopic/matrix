@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/30 20:56:11 by alaparic          #+#    #+#              #
-#    Updated: 2025/11/30 21:05:59 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 13:39:33 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ def main():
 
     u = Vector([1.0, 1.0])
     v = Vector([1.0, 1.0])
-    print(f"{u} · {v} = {u.dot(v)}")
+    print(f"{u} @ {v} = {u @ v}")   # Dot product using @ operator
 
     u = Vector([-1.0, 6.0])
     v = Vector([3.0, 2.0])

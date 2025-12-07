@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/03 12:34:49 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/04 20:29:20 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 19:03:49 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ def main():
     print(mat)
     det = determinant(mat.data)
     print(f"\nDeterminant: {det}\n")
-    print()
+
     m = Matrix([
         [0.0, 1.0, 2.0],
         [3.0, 0.0, 4.0],
@@ -59,6 +59,16 @@ def main():
     print("Matrix:")
     print(m)
     det = determinant(m.data)
+    print(f"\nDeterminant: {det}\n")
+
+    mat = Matrix([
+        [2, -3, 5],
+        [1, -1, 0],
+        [0, -1, 5]      # linear combination (R3 = R1 - 2 * R2)
+    ])
+    print("Matrix (R3 = R1 - 2 * R2):")
+    print(mat)
+    det = determinant(mat.data)
     print(f"\nDeterminant: {det}\n")
 
 

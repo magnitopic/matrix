@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/04 20:23:18 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/07 13:10:35 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 19:16:42 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,26 @@ def main():
         [1.0, 2.0, 3.0],
         [4.0, 5.0, 6.0],
         [7.0, 8.0, 9.0]     # This matrix is singular
+    ])
+    try:
+        print("Original Matrix:")
+        print(m)
+        inv = inverse(m)
+        print("Inverse Matrix:")
+        print(inv)
+        print("Checking multiplication (should be identity):")
+        print(m @ inv)
+        print("-"*20)
+        print()
+    except ValueError as e:
+        print(e)
+        print("-"*20)
+        print()
+
+    m = Matrix([
+        [1.0, 2.0, 3.0, 5],
+        [4.0, 5.0, 6.0, -4],
+        [7.0, 8.0, 9.0, 1]
     ])
     try:
         print("Original Matrix:")

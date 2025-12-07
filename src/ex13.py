@@ -6,7 +6,7 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/05 14:20:37 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 18:08:39 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 19:21:12 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,18 +109,6 @@ def main():
     print(f"Row echelon form:\n{mat.row_echelon()}")
     print(f"Rank: {rank_value}")  # Should be 2
     print()
-
-    # Case 7: Rank explanation
-    print("Interpretation of Matrix Rank:")
-    print("1. The rank of a matrix is the number of linearly independent rows (or columns).")
-    print("2. It is the dimension of the image space of the linear transformation represented by the matrix.")
-    print("3. For an m×n matrix, the rank r satisfies: 0 ≤ r ≤ min(m,n).")
-    print("4. If the rank equals the number of rows, the matrix has full row rank.")
-    print("5. If the rank equals the number of columns, the matrix has full column rank.")
-    print("6. A square matrix is invertible if and only if its rank equals its dimension.")
-    print("7. By the rank-nullity theorem: dim(ker(A)) + rank(A) = n, where n is the number of columns.")
-    print("   This relates the dimension of the null space with the rank of the matrix.")
-
 
 if __name__ == "__main__":
     main()
