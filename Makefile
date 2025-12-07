@@ -1,11 +1,8 @@
-all: create-venv install-deps
+all: create-venv
 
 create-venv:
 	python3 -m venv venv
 	@echo "Virtual environment created!"
-
-install-deps:
-	venv/bin/pip install -r requirements.txt
 
 0:
 	@venv/bin/python3 src/ex00.py
