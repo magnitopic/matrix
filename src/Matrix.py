@@ -6,23 +6,17 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 12:30:48 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 13:15:04 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 12:39:33 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from typing import TypeVar, Generic, List, Tuple, Callable
+from typing import TypeVar, Generic, List, Tuple
 import numbers
 from unittest import result
 from Vector import Vector
 
 T = TypeVar('T', bound=numbers.Number)
-
-
-class Matrix(Generic[T]):
-    pass
-
-
-O = TypeVar('O', Vector, Matrix)
+O = TypeVar('O')
 
 
 class Matrix(Generic[T]):
@@ -189,6 +183,12 @@ class Matrix(Generic[T]):
 
     def shape(self) -> Tuple[int, int]:
         return len(self.data), len(self.data[0])
+
+    def __len__(self) -> int:
+        return len(self.data)
+
+    def __getitem__(self, index: int) -> List[T]:
+        return self.data[index]
 
     def __str__(self) -> str:
         rows = [

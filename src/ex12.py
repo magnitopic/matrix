@@ -6,11 +6,13 @@
 #    By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/04 20:23:18 by alaparic          #+#    #+#              #
-#    Updated: 2025/12/05 14:20:10 by alaparic         ###   ########.fr        #
+#    Updated: 2025/12/07 13:10:35 by alaparic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from Matrix import Matrix
+
+TOLERANCE = 1e-12
 
 
 def inverse(matrix: Matrix[float]) -> Matrix[float]:
@@ -33,14 +35,18 @@ def inverse(matrix: Matrix[float]) -> Matrix[float]:
     # Forward elimination (to row echelon form)
     for col in range(n):
         # Find pivot
-        pivot_row = None
-        for row in range(col, n):
-            if augmented[row][col] != 0:
-                pivot_row = row
-                break
+        pivot_row = col
+        max_val = 0
 
-        # If no pivot found, matrix is singular (not invertible)
-        if pivot_row is None:
+        for row in range(col, n):
+            # Use abs() to handle complex numbers and find the largest magnitude pivot
+            current_abs = abs(augmented[row][col])
+            if current_abs > max_val:
+                max_val = current_abs
+                pivot_row = row
+
+        # If the largest pivot value is less than the tolerance, the matrix is singular.
+        if max_val < TOLERANCE:
             raise ValueError(
                 "\033[0;31mMatrix is singular and cannot be inverted.\033[0m")
 
